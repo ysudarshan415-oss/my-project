@@ -68,7 +68,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: YOUR_DOCKER_USERNAME/my-app:${{ github.sha }}
+          tags: shauryadav/my-app:${{ github.sha }}
 
   # 4. Deploy to EC2
   deploy:
