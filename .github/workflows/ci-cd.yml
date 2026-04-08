@@ -84,6 +84,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             docker pull shauryadav/myapp:${{ github.sha }}
-            docker stop my-app || true
-            docker rm my-app || true
+            docker stop myapp || true
+            docker rm myapp || true
             docker run -d -p 5000:5000 --name my-app shauryadav/myapp:${{ github.sha }}
