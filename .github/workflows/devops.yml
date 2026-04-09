@@ -43,7 +43,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: YOUR_DOCKER_USERNAME/my-app:${{ github.sha }}
+          tags: shauryadav/my-app:${{ github.sha }}
 
   deploy-dev:
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
           username: ${{ secrets.DEV_EC2_USER }}
           key: ${{ secrets.DEV_EC2_SSH_KEY }}
           script: |
-            docker pull YOUR_DOCKER_USERNAME/my-app:${{ github.sha }}
+            docker pull shauryadav/my-app:${{ github.sha }}
             docker stop my-app || true
             docker rm my-app || true
             docker run -d -p 5000:5000 --name my-app YOUR_DOCKER_USERNAME/my-app:${{ github.sha }}
@@ -78,7 +78,7 @@ jobs:
           username: ${{ secrets.PROD_EC2_USER }}
           key: ${{ secrets.PROD_EC2_SSH_KEY }}
           script: |
-            docker pull YOUR_DOCKER_USERNAME/my-app:${{ github.sha }}
+            docker pull shauryadav/my-app:${{ github.sha }}
             docker stop my-app || true
             docker rm my-app || true
-            docker run -d -p 5000:5000 --name my-app YOUR_DOCKER_USERNAME/my-app:${{ github.sha }}
+            docker run -d -p 5000:5000 --name my-app shauryadav/my-app:${{ github.sha }}
